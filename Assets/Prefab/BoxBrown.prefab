@@ -13,9 +13,11 @@ GameObject:
   - component: {fileID: 8607331262143225104}
   - component: {fileID: 4257693194979818338}
   - component: {fileID: 9065976321879036441}
+  - component: {fileID: 5808524587545876875}
+  - component: {fileID: -3077447790681507261}
   m_Layer: 0
   m_Name: BoxBrown
-  m_TagString: Untagged
+  m_TagString: Box
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -131,5 +133,33 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 112
-  m_CollisionDetection: 0
+  m_Constraints: 120
+  m_CollisionDetection: 1
+--- !u!114 &5808524587545876875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158395190101800557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: def7727cd038fb844ad62097eec1af4d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxStatus: 0
+  rb: {fileID: 9065976321879036441}
+--- !u!114 &-3077447790681507261
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6158395190101800557}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ab4bc5d8d1cb1a4f8fd0f0da5332499, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  boxColider: {fileID: 4257693194979818338}
+  boxColor: 5

@@ -11,9 +11,9 @@ public class SpawnBox : MonoBehaviour
     {
         if (other.TryGetComponent<Hand>(out Hand hand))
         {
-            Rigidbody Box = Instantiate(arrayBoxes[Random.Range(0,8)], hand.BoxTarget).GetComponent<Rigidbody>();
+            Rigidbody Box = Instantiate(arrayBoxes[Random.Range(0, arrayBoxes.Length)], hand.BoxTarget).GetComponent<Rigidbody>();
             hand.SetBox(Box);
-            hand.SetTarget(arraySpawnPoints[Random.Range(0, 15)]);
+            hand.SetTarget(arraySpawnPoints[Random.Range(0, arraySpawnPoints.Length)]);
         }
     }
 }

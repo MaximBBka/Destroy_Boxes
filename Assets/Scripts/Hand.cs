@@ -26,6 +26,8 @@ public class Hand : MonoBehaviour
     {
         _box.transform.parent = null;
         _box.isKinematic = false;
+        _box.transform.position = new Vector3(Mathf.Round(_box.transform.position.x), _box.transform.position.y, _box.transform.position.z);
+        _box.constraints = RigidbodyConstraints.FreezePositionX | RigidbodyConstraints.FreezePositionZ | RigidbodyConstraints.FreezeRotation;
         _box = null;
     }
     private void Update()

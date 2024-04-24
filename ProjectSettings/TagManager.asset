@@ -5,6 +5,9 @@ TagManager:
   serializedVersion: 2
   tags:
   - Robot
+  - Box
+  - Head
+  - Delete
   layers:
   - Default
   - TransparentFX
