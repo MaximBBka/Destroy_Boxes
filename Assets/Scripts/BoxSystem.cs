@@ -7,15 +7,10 @@ public class BoxSystem : MonoBehaviour
     [SerializeField] BoxCollider boxColider;
     public BoxColor boxColor;
     private float speed = 0f;
-    private float timerAbility;
 
     private void Update()
     {
         speed = GetComponent<Rigidbody>().velocity.magnitude;
-        if (MainUI.Instance.IsAbility && MainUI.Instance.totalAbility > 0) 
-        {
-            DeleteBox();
-        }
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -26,34 +21,17 @@ public class BoxSystem : MonoBehaviour
             {
                 if (collision.collider.GetComponent<BoxSystem>().boxColor == boxColor && speed == 0)
                 {
-                    MainUI.Instance.UpdateCoins(MainUI.Instance.totalCoins += 1);
-                    MainUI.Instance.UpdateScore(MainUI.Instance.totalScore += 10); 
                     Destroy(this.gameObject, 0.3f);
                     Destroy(collision.gameObject, 0.3f);
                 }
             }
         }
-        if (collision.collider.CompareTag("Delete"))
-        {
-            MainUI.Instance.UpdateCoins(MainUI.Instance.totalCoins += 1);
-            MainUI.Instance.UpdateScore(MainUI.Instance.totalScore += 10);
-            Destroy(gameObject);
-        }
     }
-    private void DeleteBox()
+    private void OnDestroy()
     {
-        if (transform.position.y < 2f)
-        {
-            boxColider.isTrigger = true;
-            timerAbility += Time.deltaTime;
-            if (timerAbility > 1f) 
-            {
-                boxColider.isTrigger = false;
-                MainUI.Instance.DisableAbility();
-            }           
-        }
+        MainUI.Instance.UpdateCoins(MainUI.Instance.totalCoins += 1);
+        MainUI.Instance.UpdateScore(MainUI.Instance.totalScore += 10);
     }
-    
 }
 
 public enum BoxColor

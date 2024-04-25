@@ -28,9 +28,11 @@ public class MainUI : MonoBehaviour
             Instance = this;
         }
     }
-    private void Update()
+    private void OnValidate()
     {
         UpdateAbility(totalAbility);
+        UpdateCoins(totalCoins);
+        UpdateScore(totalScore);
     }
 
     public void ShowPanelLose()
@@ -45,14 +47,6 @@ public class MainUI : MonoBehaviour
     public void OffPauseGame()
     {
         Time.timeScale = 1f;
-    }
-    public void EnableAbility()
-    {
-        IsAbility = true;
-    }
-    public void DisableAbility()
-    {
-        IsAbility = false;
     }
     public void UpdateCoins(int total)
     {

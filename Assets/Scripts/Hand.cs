@@ -11,7 +11,7 @@ public class Hand : MonoBehaviour
     [SerializeField] private Rigidbody _box;
     [SerializeField] private Transform[] arrayTakePoints;
     [SerializeField] private Transform _target;
-    [SerializeField] private float moveSpeed;
+    [SerializeField] public float moveSpeed;
 
     public void SetTarget(Transform target)
     {
