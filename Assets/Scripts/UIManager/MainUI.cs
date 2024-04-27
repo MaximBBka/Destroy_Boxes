@@ -6,12 +6,20 @@ using UnityEngine.UI;
 
 public class MainUI : MonoBehaviour
 {
-    [SerializeField] private GameObject panelLose;
+    [SerializeField] public GameObject panelLose;
+    [SerializeField] public GameObject panelPause;
+    [SerializeField] public GameObject WindowAds;
     [SerializeField] private TextMeshProUGUI coinsTetx;
     [SerializeField] private TextMeshProUGUI scoreTetx;
+    [SerializeField] private TextMeshProUGUI scoreTetxLose;
     [SerializeField] private TextMeshProUGUI totalAbilityText;
     [SerializeField] private Button buttonAds;
     [SerializeField] private Button buttonBuyAbility;
+    [SerializeField] public Button buttonContinueAds;
+    [SerializeField] public Button buttonContinueAdsLose;
+    [SerializeField] public Button buttonReturnAds;
+    [SerializeField] public TextMeshProUGUI AdsTimerText;
+
     public int totalCoins;
     public int totalScore;
     public int totalAbility = 2;
@@ -28,7 +36,7 @@ public class MainUI : MonoBehaviour
             Instance = this;
         }
     }
-    private void OnValidate()
+    private void Update()
     {
         UpdateAbility(totalAbility);
         UpdateCoins(totalCoins);
@@ -37,6 +45,7 @@ public class MainUI : MonoBehaviour
 
     public void ShowPanelLose()
     {
+        UpdateScoreOnLose(totalScore);
         OnPauseGame();
         panelLose.SetActive(true);
     }
@@ -83,5 +92,14 @@ public class MainUI : MonoBehaviour
             totalCoins -= 50;
             totalAbility += 1;
         }
+    }
+    public void UpdateScoreOnLose(int total)
+    {
+        scoreTetxLose.SetText($"—чет: {total}");
+    }
+    public void ContinueGame()
+    {
+        Time.timeScale = 1f;
+        WindowAds.gameObject.SetActive(false);
     }
 }
