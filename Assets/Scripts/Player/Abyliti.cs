@@ -27,5 +27,15 @@ public class Abyliti : MonoBehaviour
             MainUI.Instance.UpdateAbility(MainUI.Instance.totalAbility);
         }
     }
+    public void DeleteBoxForAd()
+    {
+        for (int i = 0; i < boxes.Count; i++)
+        {
+            Destroy(boxes[i]);
+        }
+        boxes.Clear();
+        MainUI.Instance.UpdateAbility(MainUI.Instance.totalAbility);
+
+    }
 
 }
