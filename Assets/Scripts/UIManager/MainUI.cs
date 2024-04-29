@@ -23,7 +23,7 @@ public class MainUI : MonoBehaviour
     public int totalCoins;
     public int totalScore;
     public int totalAbility = 2;
-    [field: SerializeField] public static MainUI Instance {  get; private set; }
+    [field: SerializeField] public static MainUI Instance { get; private set; }
     public bool IsAbility = false;
     private void Awake()
     {
@@ -41,6 +41,7 @@ public class MainUI : MonoBehaviour
         UpdateAbility(totalAbility);
         UpdateCoins(totalCoins);
         UpdateScore(totalScore);
+        ShowReturnAds();
     }
 
     public void ShowPanelLose()
@@ -73,12 +74,14 @@ public class MainUI : MonoBehaviour
             buttonBuyAbility.gameObject.SetActive(false);
             totalAbilityText.gameObject.SetActive(false);
             buttonAds.gameObject.SetActive(true);
-        }else if (total >= 1 && totalCoins < 50) 
+        }
+        else if (total >= 1 && totalCoins < 50)
         {
             buttonAds.gameObject.SetActive(false);
             buttonBuyAbility.gameObject.SetActive(false);
-            totalAbilityText.gameObject.SetActive(true);           
-        }else if (total <= 0 && totalCoins >= 50)
+            totalAbilityText.gameObject.SetActive(true);
+        }
+        else if (total <= 0 && totalCoins >= 50)
         {
             buttonAds.gameObject.SetActive(false);
             buttonBuyAbility.gameObject.SetActive(true);
@@ -101,5 +104,17 @@ public class MainUI : MonoBehaviour
     {
         Time.timeScale = 1f;
         WindowAds.gameObject.SetActive(false);
+    }
+    public void ShowReturnAds()
+    {
+        if (totalScore <= 0)
+        {
+            buttonReturnAds.gameObject.SetActive(false);
+        }
+        else
+        {
+            buttonReturnAds.gameObject.SetActive(true);
+        }
+
     }
 }
